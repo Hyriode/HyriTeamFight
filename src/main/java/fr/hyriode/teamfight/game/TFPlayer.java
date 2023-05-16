@@ -5,6 +5,9 @@ import fr.hyriode.hyrame.game.protocol.HyriLastHitterProtocol;
 import fr.hyriode.hyrame.item.ItemBuilder;
 import fr.hyriode.hyrame.utils.PlayerUtil;
 import fr.hyriode.teamfight.HyriTeamFight;
+import fr.hyriode.teamfight.api.TFData;
+import fr.hyriode.teamfight.api.TFHotBar;
+import fr.hyriode.teamfight.api.TFStatistics;
 import fr.hyriode.teamfight.game.scoreboard.TFScoreboard;
 import fr.hyriode.teamfight.util.TFValues;
 import org.bukkit.Color;
@@ -12,6 +15,7 @@ import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
 import java.util.List;
@@ -25,6 +29,9 @@ public class TFPlayer extends HyriGamePlayer {
     private int kills = 0;
     private int deaths = 0;
     private int roundsWon = 0;
+
+    private TFStatistics statistics;
+    private TFData data;
 
     private TFScoreboard scoreboard;
 
@@ -94,6 +101,20 @@ public class TFPlayer extends HyriGamePlayer {
     }
 
     public void onDeath() {
+        // Save hot bar
+        final PlayerInventory inventory = this.player.getInventory();
+
+        for (TFHotBar.Item item : this.data.getHotBar().getItems().keySet()) {
+            for (int i = 0; i <= 9; i++) {
+                final ItemStack itemStack = inventory.getItem(i);
+
+                if (itemStack != null && itemStack.getType() == Material.getMaterial(item.getName())) {
+                    this.data.getHotBar().setItem(item, i);
+                }
+            }
+        }
+
+        // Killer handling
         final TFPlayer killer = this.getLastHitter();
 
         if (killer != null) {
@@ -118,6 +139,22 @@ public class TFPlayer extends HyriGamePlayer {
 
     public TFScoreboard getScoreboard() {
         return this.scoreboard;
+    }
+
+    public TFStatistics getStatistics() {
+        return this.statistics;
+    }
+
+    public void setStatistics(TFStatistics statistics) {
+        this.statistics = statistics;
+    }
+
+    public TFData getData() {
+        return this.data;
+    }
+
+    public void setData(TFData data) {
+        this.data = data;
     }
 
     public void addKill() {

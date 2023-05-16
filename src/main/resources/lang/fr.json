@@ -10,6 +10,24 @@
   "team.white.display": "Blanc",
   "team.black.display": "Noir",
 
+  "message.game.end.1": "&e1er",
+  "message.game.end.2": "&62ème",
+  "message.game.end.3": "&c3ème",
+  "message.game.end.nobody": "&7Personne",
+  "message.game.end.kills": "%position% %player% &7- &b%kills%",
+
+  "waiting-room.npc.data.kills": "Kills",
+  "waiting-room.npc.data.deaths": "Morts",
+  "waiting-room.npc.data.rounds-won": "Rounds gagnés",
+  "waiting-room.npc.data.victories": "Victoires",
+  "waiting-room.npc.data.games-played": "Parties jouées",
+  "waiting-room.npc.data.played-time": "Temps de jeu",
+
+  "leaderboard.experience.display": "&3Expérience &8┃ &7Classement",
+  "leaderboard.kills.display": "&3Kills &8┃ &7Classement",
+  "leaderboard.victories.display": "&3Victoires &8┃ &7Classement",
+  "leaderboard.rounds-won.display": "&3Rounds gagnés &8┃ &7Classement",
+
   "scoreboard.kills.display": "Kills",
   "scoreboard.deaths.display": "Morts",
   "scoreboard.time.display": "Temps",
