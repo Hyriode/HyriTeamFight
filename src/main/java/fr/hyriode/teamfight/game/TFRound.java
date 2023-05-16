@@ -142,7 +142,7 @@ public class TFRound {
     public void free() {
         // Reset blocks types
         BlockUtil.setBlocksFaster(this.placedBlocks, 0, 0);
-        BlockUtil.setBlocksFaster(this.brokenBlocks, 24, 0);
+        BlockUtil.setBlocksFaster(this.brokenBlocks, 24, 2);
 
         // Remove metadata
         for (Block block : this.placedBlocks) {
