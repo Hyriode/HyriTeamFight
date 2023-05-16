@@ -1,0 +1,5 @@
+name: HyriTeamFight
+main: fr.hyriode.teamfight.HyriTeamFight
+version: @version@
+depend: [Hyrame]
+authors: [AstFaster]
