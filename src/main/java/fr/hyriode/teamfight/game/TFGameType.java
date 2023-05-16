@@ -8,6 +8,7 @@ import fr.hyriode.hyrame.game.HyriGameType;
  */
 public enum TFGameType implements HyriGameType {
 
+    ONE_ONE("1v1", 8, 10),
     FIVE_FIVE("5v5", 8, 10),
 
     ;

@@ -91,6 +91,12 @@ public class TFGame extends HyriGame<TFPlayer> {
         this.updatePlayer(gamePlayer);
 
         super.handleLogout(player);
+
+        if (this.getState() == HyriGameState.PLAYING) {
+            if (!gamePlayer.getTeam().hasPlayersPlaying()) {
+                this.win(gamePlayer.getTeam().getOppositeTeam());
+            }
+        }
     }
 
     @Override

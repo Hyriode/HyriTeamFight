@@ -4,6 +4,7 @@ import fr.hyriode.hyrame.game.HyriGamePlayer;
 import fr.hyriode.hyrame.game.team.HyriGameTeam;
 import fr.hyriode.teamfight.HyriTeamFight;
 import fr.hyriode.teamfight.config.TFConfig;
+import fr.hyriode.teamfight.game.TFGame;
 import fr.hyriode.teamfight.game.TFPlayer;
 import fr.hyriode.teamfight.util.TFValues;
 import org.bukkit.Location;
@@ -61,4 +62,14 @@ public class TFTeam extends HyriGameTeam {
         return this.config;
     }
 
+    public TFTeam getOppositeTeam() {
+        final TFGame game = HyriTeamFight.get().getGame();
+
+        if (this.equals(game.getFirstTeam())) {
+            return game.getSecondTeam();
+        } else {
+            return game.getFirstTeam();
+        }
+
+    }
 }

@@ -2,6 +2,7 @@ package fr.hyriode.teamfight.game;
 
 import fr.hyriode.hyrame.game.HyriGamePlayer;
 import fr.hyriode.hyrame.game.protocol.HyriLastHitterProtocol;
+import fr.hyriode.hyrame.game.team.HyriGameTeam;
 import fr.hyriode.hyrame.item.ItemBuilder;
 import fr.hyriode.hyrame.utils.PlayerUtil;
 import fr.hyriode.teamfight.HyriTeamFight;
@@ -9,6 +10,7 @@ import fr.hyriode.teamfight.api.TFData;
 import fr.hyriode.teamfight.api.TFHotBar;
 import fr.hyriode.teamfight.api.TFStatistics;
 import fr.hyriode.teamfight.game.scoreboard.TFScoreboard;
+import fr.hyriode.teamfight.game.team.TFTeam;
 import fr.hyriode.teamfight.util.TFValues;
 import org.bukkit.Color;
 import org.bukkit.GameMode;
@@ -175,6 +177,11 @@ public class TFPlayer extends HyriGamePlayer {
 
     public int getRoundsWon() {
         return this.roundsWon;
+    }
+
+    @Override
+    public TFTeam getTeam() {
+        return (TFTeam) super.getTeam();
     }
 
 }
