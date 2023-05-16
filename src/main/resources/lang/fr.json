@@ -1,3 +1,21 @@
 {
+  "game.description": "&fVotre objectif est d'éliminer tous les joueurs de l'équipe adverse afin de gagner un maximum de rounds et remporter la partie !",
 
+  "team.blue.display": "Bleu",
+  "team.red.display": "Rouge",
+  "team.green.display": "Vert",
+  "team.yellow.display": "Jaune",
+  "team.aqua.display": "Aqua",
+  "team.pink.display": "Rose",
+  "team.white.display": "Blanc",
+  "team.black.display": "Noir",
+
+  "scoreboard.kills.display": "Kills",
+  "scoreboard.deaths.display": "Morts",
+  "scoreboard.time.display": "Temps",
+  "scoreboard.you.display": " &7(YOU)",
+
+  "starting.go": "&bFIGHT !",
+
+  "message.round-win": "\n&fL'équipe %team% &fa remporté le round !\n"
 }

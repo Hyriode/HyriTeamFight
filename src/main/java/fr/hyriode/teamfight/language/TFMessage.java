@@ -18,12 +18,12 @@ public enum TFMessage {
 
     GAME_DESCRIPTION("game.description"),
 
-    PLAYER_KILL("player.kill"),
-    PLAYER_KILL_PLAYER("player.kill-player"),
-    PLAYER_FINAL_KILL("player.final-kill"),
-
     SCOREBOARD_TIME("scoreboard.time"),
     SCOREBOARD_KILLS("scoreboard.kills"),
+
+    STARTING_GO("starting.go"),
+
+    ROUND_WIN("message.round-win")
 
     ;
 

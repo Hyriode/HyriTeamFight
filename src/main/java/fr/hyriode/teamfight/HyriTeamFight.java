@@ -72,6 +72,10 @@ public class HyriTeamFight extends JavaPlugin implements IPluginProvider {
         return this.config;
     }
 
+    public TFGame getGame() {
+        return this.game;
+    }
+
     @Override
     public JavaPlugin getPlugin() {
         return this;

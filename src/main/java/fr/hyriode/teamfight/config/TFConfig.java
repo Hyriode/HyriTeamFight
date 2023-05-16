@@ -2,9 +2,8 @@ package fr.hyriode.teamfight.config;
 
 import fr.hyriode.api.config.IHyriConfig;
 import fr.hyriode.hyrame.game.waitingroom.HyriWaitingRoom;
+import fr.hyriode.hyrame.utils.AreaWrapper;
 import fr.hyriode.hyrame.utils.LocationWrapper;
-
-import java.util.List;
 
 /**
  * Created by AstFaster
@@ -13,19 +12,39 @@ import java.util.List;
 public class TFConfig implements IHyriConfig {
 
     private final HyriWaitingRoom.Config waitingRoom;
-    private final List<Team> teams;
 
-    public TFConfig(HyriWaitingRoom.Config waitingRoom, List<Team> teams) {
+    private final AreaWrapper gameArea;
+    private final LocationWrapper center;
+
+    private final Team firstTeam;
+    private final Team secondTeam;
+
+    public TFConfig(HyriWaitingRoom.Config waitingRoom, AreaWrapper gameArea, LocationWrapper center, Team firstTeam, Team secondTeam) {
         this.waitingRoom = waitingRoom;
-        this.teams = teams;
+        this.gameArea = gameArea;
+        this.center = center;
+        this.firstTeam = firstTeam;
+        this.secondTeam = secondTeam;
     }
 
     public HyriWaitingRoom.Config getWaitingRoom() {
         return this.waitingRoom;
     }
 
-    public List<Team> getTeams() {
-        return this.teams;
+    public AreaWrapper getGameArea() {
+        return this.gameArea;
+    }
+
+    public LocationWrapper getCenter() {
+        return this.center;
+    }
+
+    public Team getFirstTeam() {
+        return this.firstTeam;
+    }
+
+    public Team getSecondTeam() {
+        return this.secondTeam;
     }
 
     public static class Team {

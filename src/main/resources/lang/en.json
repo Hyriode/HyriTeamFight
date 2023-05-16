@@ -1,3 +1,21 @@
 {
+  "game.description": "&fYour goal is to kill all the players of the enemy team to earn a maximum amount of rounds, so, to win the game!",
 
+  "team.blue.display": "Blue",
+  "team.red.display": "Red",
+  "team.green.display": "Green",
+  "team.yellow.display": "Yellow",
+  "team.aqua.display": "Aqua",
+  "team.pink.display": "Pink",
+  "team.white.display": "White",
+  "team.black.display": "Black",
+
+  "scoreboard.kills.display": "Kills",
+  "scoreboard.deaths.display": "Deaths",
+  "scoreboard.time.display": "Timer",
+  "scoreboard.you.display": " &7(VOUS)",
+
+  "starting.go": "&bFIGHT !",
+
+  "message.round-win": "\n&fThe %team% &fteam just won the round!\n"
 }
