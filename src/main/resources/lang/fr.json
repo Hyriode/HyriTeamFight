@@ -28,12 +28,12 @@
   "leaderboard.victories.display": "&3Victoires &8┃ &7Classement",
   "leaderboard.rounds-won.display": "&3Rounds gagnés &8┃ &7Classement",
 
-  "scoreboard.kills.display": "Kills",
-  "scoreboard.deaths.display": "Morts",
-  "scoreboard.time.display": "Temps",
-  "scoreboard.you.display": " &7(YOU)",
+  "scoreboard.kills.display": "Kills: ",
+  "scoreboard.deaths.display": "Morts: ",
+  "scoreboard.time.display": "Temps: ",
+  "scoreboard.you.display": " &7(VOUS)",
 
   "starting.go": "&bFIGHT !",
 
-  "message.round-win": "\n&fL'équipe %team% &fa remporté le round !\n"
+  "message.round-win": "\n&7L'équipe %team% &7a remporté le round !\n \n"
 }

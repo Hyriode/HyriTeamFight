@@ -9,6 +9,7 @@ import fr.hyriode.hyrame.game.event.player.HyriGameReconnectedEvent;
 import fr.hyriode.hyrame.game.event.player.HyriGameSpectatorEvent;
 import fr.hyriode.hyrame.game.protocol.HyriDeathProtocol;
 import fr.hyriode.hyrame.listener.HyriListener;
+import fr.hyriode.hyrame.utils.PlayerUtil;
 import fr.hyriode.teamfight.HyriTeamFight;
 import fr.hyriode.teamfight.game.TFGame;
 import fr.hyriode.teamfight.game.TFPlayer;
@@ -28,10 +29,18 @@ public class GameListener extends HyriListener<HyriTeamFight> {
 
     @HyriEventHandler
     public void onReconnected(HyriGameReconnectedEvent event) {
-        final TFPlayer player = (TFPlayer) event.getGamePlayer();
+        final TFPlayer gamePlayer = (TFPlayer) event.getGamePlayer();
         final TFGame game = this.plugin.getGame();
+        final Player player = gamePlayer.getPlayer();
 
-        game.getProtocolManager().getProtocol(HyriDeathProtocol.class).runDeath(HyriGameDeathEvent.Reason.VOID, player.getPlayer());
+        gamePlayer.init();
+        game.getProtocolManager().getProtocol(HyriDeathProtocol.class).runDeath(null, player);
+
+        if (gamePlayer.isDead()) {
+            gamePlayer.hide();
+
+            PlayerUtil.addSpectatorAbilities(player);
+        }
     }
 
     @HyriEventHandler
@@ -41,7 +50,7 @@ public class GameListener extends HyriListener<HyriTeamFight> {
         final Player player = spectator.getPlayer();
 
         if (!(spectator instanceof HyriGamePlayer)) { // Player is an outside spectator
-            player.teleport(game.getWaitingRoom().getConfig().getSpawn().asBukkit());
+            player.teleport(game.getConfig().getCenter().asBukkit());
         }
     }
 

@@ -69,11 +69,12 @@ public class TFPlayer extends HyriGamePlayer {
 
     private void giveItems() {
         final PlayerInventory inventory = this.player.getInventory();
+        final TFHotBar hotBar = this.data.getHotBar();
 
         inventory.addItem(new ItemBuilder(Material.SANDSTONE, 64 * 9, 2).build());
-        inventory.setItem(0, new ItemBuilder(Material.IRON_SWORD).withEnchant(Enchantment.DAMAGE_ALL, 1).unbreakable().build());
-        inventory.setItem(3, new ItemBuilder(Material.IRON_PICKAXE).withEnchant(Enchantment.DIG_SPEED, 2).unbreakable().build());
-        inventory.setItem(8, new ItemBuilder(Material.GOLDEN_APPLE, TFValues.GOLDEN_APPLES.get()).build());
+        inventory.setItem(hotBar.getSlot(TFHotBar.Item.SWORD), new ItemBuilder(Material.IRON_SWORD).withEnchant(Enchantment.DAMAGE_ALL, 1).unbreakable().build());
+        inventory.setItem(hotBar.getSlot(TFHotBar.Item.PICKAXE), new ItemBuilder(Material.IRON_PICKAXE).withEnchant(Enchantment.DIG_SPEED, 2).unbreakable().build());
+        inventory.setItem(hotBar.getSlot(TFHotBar.Item.GOLDEN_APPLE), new ItemBuilder(Material.GOLDEN_APPLE, TFValues.GOLDEN_APPLES.get()).build());
 
         final Color color = this.getTeam().getColor().getDyeColor().getColor();
 

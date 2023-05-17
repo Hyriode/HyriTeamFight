@@ -25,16 +25,15 @@
 
   "leaderboard.experience.display": "&3Experience &8┃ &7Leaderboard",
   "leaderboard.kills.display": "&3Kills &8┃ &7Leaderboard",
-  "leaderboard.victories.display": "&3Victoires &8┃ &7Leaderboard",
-  "leaderboard.rounds-won.display": "&3Rounds gagnés &8┃ &7Leaderboard",
+  "leaderboard.victories.display": "&3Victories &8┃ &7Leaderboard",
+  "leaderboard.rounds-won.display": "&3Rounds won &8┃ &7Leaderboard",
 
-
-  "scoreboard.kills.display": "Kills",
-  "scoreboard.deaths.display": "Deaths",
-  "scoreboard.time.display": "Timer",
-  "scoreboard.you.display": " &7(VOUS)",
+  "scoreboard.kills.display": "Kills: ",
+  "scoreboard.deaths.display": "Deaths: ",
+  "scoreboard.time.display": "Timer: ",
+  "scoreboard.you.display": " &7(TOI)",
 
   "starting.go": "&bFIGHT !",
 
-  "message.round-win": "\n&fThe %team% &fteam just won the round!\n"
+  "message.round-win": "\n&7The %team% &7team just won the round!\n \n"
 }

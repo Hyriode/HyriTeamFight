@@ -38,12 +38,13 @@ public class TFRound {
 
         this.game.getTeams().forEach(team -> ((TFTeam) team).spawnPlayers());
 
-        for (TFPlayer player : this.game.getPlayers()) {
-            if (!player.isOnline()) {
+        for (TFPlayer gamePlayer : this.game.getPlayers()) {
+            if (!gamePlayer.isOnline()) {
                 continue;
             }
 
-            player.spawn();
+            gamePlayer.getPlayer().setWalkSpeed(0.0f);
+            gamePlayer.spawn();
         }
 
         // Start timer
@@ -55,6 +56,14 @@ public class TFRound {
             public void run() {
                 if (this.index == 0) {
                     phase = Phase.FIGHTING;
+
+                    for (TFPlayer gamePlayer : game.getPlayers()) {
+                        if (!gamePlayer.isOnline()) {
+                            continue;
+                        }
+
+                        gamePlayer.getPlayer().setWalkSpeed(0.2f);
+                    }
 
                     this.alert(TFMessage.STARTING_GO::asString, Sound.ENDERDRAGON_GROWL, 1.0f, 0.5f);
                     this.cancel();
@@ -98,6 +107,10 @@ public class TFRound {
         this.phase = Phase.ENDED;
 
         winner.addPoint();
+
+        for (TFPlayer gamePlayer : winner.getRemainingPlayers()) {
+            gamePlayer.addRoundWon();
+        }
 
         IHyrame.get().getScoreboardManager().getScoreboards(TFScoreboard.class).forEach(TFScoreboard::update);
 

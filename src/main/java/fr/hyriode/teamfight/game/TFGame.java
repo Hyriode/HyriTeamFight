@@ -65,8 +65,8 @@ public class TFGame extends HyriGame<TFPlayer> {
     private void registerTeams() {
         final Pair<ETFTeam, ETFTeam> teamsPair = ETFTeam.generatePair();
 
-        this.firstTeam = new TFTeam(teamsPair.getKey(), this.config.getFirstTeam());
-        this.secondTeam = new TFTeam(teamsPair.getValue(), this.config.getSecondTeam());
+        this.firstTeam = new TFTeam(teamsPair.getKey(), this.config.getFirstTeam(), this.type.getMinPlayers() / 2);
+        this.secondTeam = new TFTeam(teamsPair.getValue(), this.config.getSecondTeam(), this.type.getMinPlayers() / 2);
 
         this.registerTeam(this.firstTeam);
         this.registerTeam(this.secondTeam);
@@ -107,8 +107,9 @@ public class TFGame extends HyriGame<TFPlayer> {
         this.protocolManager.enableProtocol(new HyriDeathProtocol(this.hyrame, this.plugin, p -> {
             final TFPlayer gamePlayer = p.cast();
 
+            gamePlayer.getPlayer().teleport(this.config.getCenter().asBukkit());
             gamePlayer.onDeath();
-            return true;
+            return this.getState() == HyriGameState.PLAYING; // The game might have been won
         }, null, null).withOptions(new HyriDeathProtocol.Options()
                 .withYOptions(new HyriDeathProtocol.Options.YOptions(this.config.getGameArea().asArea().toCuboid().getLowerY()))
                 .withDeathSound(true)));

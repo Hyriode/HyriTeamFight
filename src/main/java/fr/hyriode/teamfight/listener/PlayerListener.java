@@ -1,6 +1,7 @@
 package fr.hyriode.teamfight.listener;
 
 import fr.hyriode.hyrame.game.HyriGameState;
+import fr.hyriode.hyrame.game.event.player.HyriGameDeathEvent;
 import fr.hyriode.hyrame.listener.HyriListener;
 import fr.hyriode.teamfight.HyriTeamFight;
 import fr.hyriode.teamfight.game.TFGame;
@@ -12,6 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerDropItemEvent;
@@ -72,20 +74,6 @@ public class PlayerListener extends HyriListener<HyriTeamFight> {
     }
 
     @EventHandler
-    public void onMove(PlayerMoveEvent event) {
-        final TFGame game = this.plugin.getGame();
-        final TFPlayer gamePlayer = game.getPlayer(event.getPlayer());
-
-        if (gamePlayer == null) {
-            return;
-        }
-
-        if (game.getRound().isPhase(Phase.WAITING, Phase.ENDED)) {
-            event.setCancelled(true);
-        }
-    }
-
-    @EventHandler
     public void onClick(InventoryClickEvent event) {
         if (event.getSlotType() == InventoryType.SlotType.ARMOR) {
             event.setCancelled(true);
@@ -94,6 +82,11 @@ public class PlayerListener extends HyriListener<HyriTeamFight> {
 
     @EventHandler
     public void onDrop(PlayerDropItemEvent event) {
+        event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void onItemSpawn(ItemSpawnEvent event) {
         event.setCancelled(true);
     }
 

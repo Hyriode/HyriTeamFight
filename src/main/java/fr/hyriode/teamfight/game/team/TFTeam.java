@@ -22,8 +22,8 @@ public class TFTeam extends HyriGameTeam {
 
     private final TFConfig.Team config;
 
-    public TFTeam(ETFTeam model, TFConfig.Team config) {
-        super(model.getName(), model.getDisplayName(), model.getColor(), 5);
+    public TFTeam(ETFTeam model, TFConfig.Team config, int slots) {
+        super(model.getName(), model.getDisplayName(), model.getColor(), slots);
         this.config = config;
     }
 
@@ -40,9 +40,10 @@ public class TFTeam extends HyriGameTeam {
     }
 
     public List<TFPlayer> getRemainingPlayers() {
-        return HyriTeamFight.get().getGame().getPlayers()
+        return this.players.values()
                 .stream()
                 .filter(player -> player.isOnline() && !player.isDead())
+                .map(player -> (TFPlayer) player)
                 .collect(Collectors.toList());
     }
 

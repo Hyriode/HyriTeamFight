@@ -51,8 +51,8 @@ public class TFHotBar implements MongoSerializable {
     public enum Item {
 
         SWORD("IRON_SWORD", 0),
-        PICKAXE("IRON_PICKAXE", 2),
-        GOLDEN_APPLE("GOLDEN_APPLE", 3),
+        PICKAXE("IRON_PICKAXE", 3),
+        GOLDEN_APPLE("GOLDEN_APPLE", 8),
 
         ;
 

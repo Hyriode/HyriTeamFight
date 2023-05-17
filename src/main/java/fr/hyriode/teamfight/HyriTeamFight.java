@@ -1,6 +1,7 @@
 package fr.hyriode.teamfight;
 
 import fr.hyriode.api.HyriAPI;
+import fr.hyriode.hyggdrasil.api.server.HyggServer;
 import fr.hyriode.hyrame.HyrameLoader;
 import fr.hyriode.hyrame.IHyrame;
 import fr.hyriode.hyrame.plugin.IPluginProvider;
@@ -37,6 +38,8 @@ public class HyriTeamFight extends JavaPlugin implements IPluginProvider {
         this.hyrame = HyrameLoader.load(this);
         this.config = HyriAPI.get().getServer().getConfig(TFConfig.class);
         this.hyrame.getGameManager().registerGame(() -> this.game = new TFGame());
+
+        HyriAPI.get().getServer().setState(HyggServer.State.READY);
     }
 
     @Override
