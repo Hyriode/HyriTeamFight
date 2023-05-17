@@ -1,12 +1,16 @@
 package fr.hyriode.teamfight.listener;
 
+import fr.hyriode.hyrame.game.HyriGamePlayer;
 import fr.hyriode.hyrame.game.HyriGameState;
 import fr.hyriode.hyrame.game.event.player.HyriGameDeathEvent;
 import fr.hyriode.hyrame.listener.HyriListener;
+import fr.hyriode.hyrame.utils.LocationUtil;
 import fr.hyriode.teamfight.HyriTeamFight;
 import fr.hyriode.teamfight.game.TFGame;
 import fr.hyriode.teamfight.game.TFPlayer;
 import fr.hyriode.teamfight.game.TFRound;
+import fr.hyriode.teamfight.util.TFValues;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -19,6 +23,9 @@ import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.metadata.FixedMetadataValue;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static fr.hyriode.teamfight.game.TFRound.*;
 
@@ -65,11 +72,50 @@ public class PlayerListener extends HyriListener<HyriTeamFight> {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         final Block block = event.getBlock();
+        final TFGame game = this.plugin.getGame();
+        final TFPlayer gamePlayer = game.getPlayer(event.getPlayer().getUniqueId());
+
+        if (gamePlayer == null) {
+            return;
+        }
 
         if (block.getType() != Material.SANDSTONE) {
             event.setCancelled(true);
-        } else if (!block.hasMetadata(TFGame.BLOCKS_METADATA)) {
+            return;
+        } else if (!block.hasMetadata(TFGame.BLOCKS_METADATA) && TFValues.BLOCKS.get()) {
             this.plugin.getGame().getRound().addBrokenBlock(block);
+        }
+
+        if (!TFValues.SPLEEF.get()){
+            final Location location = block.getLocation();
+            final List<Location> locations = Arrays.asList(
+                    location,
+                    location.clone().add(1, 0, 0),
+                    location.clone().add(0, 0, 1),
+                    location.clone().add(-1, 0, 0),
+                    location.clone().add(0, 0, -1)
+            );
+
+            boolean cancel = false;
+            for (HyriGamePlayer target : game.getPlayers()) {
+                if (!target.isOnline() || target.isDead() || target.isSpectator()) {
+                    continue;
+                }
+
+                if (!target.equals(gamePlayer)) {
+                    for (Location loc : locations) {
+                        if (LocationUtil.roundLocation(target.getPlayer().getLocation().subtract(0, 1, 0), 0).equals(loc)) {
+                            cancel = true;
+                        }
+                    }
+                }
+            }
+
+            if (cancel) {
+                event.setCancelled(true);
+            }
+        } else if (!TFValues.BLOCKS.get()) {
+            event.setCancelled(true);
         }
     }
 

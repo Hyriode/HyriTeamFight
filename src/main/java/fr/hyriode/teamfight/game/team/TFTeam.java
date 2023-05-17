@@ -19,12 +19,17 @@ import java.util.stream.Collectors;
 public class TFTeam extends HyriGameTeam {
 
     private int points;
+    private int maxPoints;
 
     private final TFConfig.Team config;
 
     public TFTeam(ETFTeam model, TFConfig.Team config, int slots) {
         super(model.getName(), model.getDisplayName(), model.getColor(), slots);
         this.config = config;
+    }
+
+    public void init() {
+        this.maxPoints = TFValues.WIN_POINTS.get();
     }
 
     public void spawnPlayers() {
@@ -63,6 +68,14 @@ public class TFTeam extends HyriGameTeam {
         return this.config;
     }
 
+    public int getMaxPoints() {
+        return this.maxPoints;
+    }
+
+    public void setMaxPoints(int maxPoints) {
+        this.maxPoints = maxPoints;
+    }
+
     public TFTeam getOppositeTeam() {
         final TFGame game = HyriTeamFight.get().getGame();
 
@@ -73,4 +86,5 @@ public class TFTeam extends HyriGameTeam {
         }
 
     }
+
 }

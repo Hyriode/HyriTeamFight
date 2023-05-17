@@ -7,6 +7,7 @@ import fr.hyriode.hyrame.IHyrame;
 import fr.hyriode.hyrame.plugin.IPluginProvider;
 import fr.hyriode.teamfight.config.TFConfig;
 import fr.hyriode.teamfight.game.TFGame;
+import fr.hyriode.teamfight.game.host.TFHostMainCategory;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -38,6 +39,10 @@ public class HyriTeamFight extends JavaPlugin implements IPluginProvider {
         this.hyrame = HyrameLoader.load(this);
         this.config = HyriAPI.get().getServer().getConfig(TFConfig.class);
         this.hyrame.getGameManager().registerGame(() -> this.game = new TFGame());
+
+        if (HyriAPI.get().getServer().getAccessibility().equals(HyggServer.Accessibility.HOST)) {
+            this.hyrame.getHostController().addCategory(25, new TFHostMainCategory());
+        }
 
         HyriAPI.get().getServer().setState(HyggServer.State.READY);
     }

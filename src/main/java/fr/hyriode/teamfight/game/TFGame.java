@@ -114,6 +114,9 @@ public class TFGame extends HyriGame<TFPlayer> {
                 .withYOptions(new HyriDeathProtocol.Options.YOptions(this.config.getGameArea().asArea().toCuboid().getLowerY()))
                 .withDeathSound(true)));
 
+        this.firstTeam.init();
+        this.secondTeam.init();
+
         for (TFPlayer player : this.players) {
             player.init();
         }

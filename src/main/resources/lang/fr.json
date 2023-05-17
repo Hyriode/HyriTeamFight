@@ -35,5 +35,19 @@
 
   "starting.go": "&bFIGHT !",
 
-  "message.round-win": "\n&7L'équipe %team% &7a remporté le round !\n \n"
+  "message.round-win": "\n&7L'équipe %team% &7a remporté le round !\n \n",
+
+  "host.category.teamfight-main.name": "&bTeamFight",
+  "host.category.teamfight-main.description": "&7Modifie les options liées\n&7au jeu.",
+
+  "host.option.golden-apples.name": "&bPommes en or",
+  "host.option.golden-apples.description": "&7Définis le nombre de pommes en\n&7or à donner aux joueurs.",
+  "host.option.win-points.name": "&bPoints nécessaires",
+  "host.option.win-points.description": "&7Définis le nombre de points nécessaires\n&7pour remporter la partie.",
+  "host.option.spleef.name": "&bSpleef",
+  "host.option.spleef.description": "&7Autorise ou non les joueurs\n&7à pouvoir casser les blocs\n&7sous les autres joueurs.",
+  "host.option.two-points-difference.name": "&bDeux points d'écart",
+  "host.option.two-points-difference.description": "&7Définis s'il faut 2 points d'écart\n&7pour remporter la partie.",
+  "host.option.golden-apple-kill.name": "&bPommes d'or (Kill)",
+  "host.option.golden-apple-kill.description": "&7Définis si un joueur recevera\n&7une pomme en or après avoir\n&7tué quelqu'un."
 }

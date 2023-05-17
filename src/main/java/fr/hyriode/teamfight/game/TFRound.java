@@ -1,6 +1,7 @@
 package fr.hyriode.teamfight.game;
 
 import fr.hyriode.hyrame.IHyrame;
+import fr.hyriode.hyrame.game.team.HyriGameTeam;
 import fr.hyriode.hyrame.title.Title;
 import fr.hyriode.hyrame.utils.BroadcastUtil;
 import fr.hyriode.hyrame.utils.block.BlockUtil;
@@ -8,6 +9,7 @@ import fr.hyriode.teamfight.HyriTeamFight;
 import fr.hyriode.teamfight.game.scoreboard.TFScoreboard;
 import fr.hyriode.teamfight.game.team.TFTeam;
 import fr.hyriode.teamfight.language.TFMessage;
+import fr.hyriode.teamfight.util.TFValues;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
@@ -107,6 +109,30 @@ public class TFRound {
         this.phase = Phase.ENDED;
 
         winner.addPoint();
+
+        if (TFValues.TWO_POINTS_DIFFERENCE.get()) {
+            // Update points
+            int lastPoints = -1;
+            for (HyriGameTeam in : this.game.getTeams()) {
+                final TFTeam team = in.cast();
+                final int points = team.getPoints();
+
+                if (lastPoints == -1 || points == lastPoints) {
+                    lastPoints = points;
+                } else {
+                    lastPoints = -1;
+                    break;
+                }
+            }
+
+            if (lastPoints > 0) {
+                for (HyriGameTeam in : this.game.getTeams()) {
+                    final TFTeam team = in.cast();
+
+                    team.setMaxPoints(team.getMaxPoints() + 1);
+                }
+            }
+        }
 
         for (TFPlayer gamePlayer : winner.getRemainingPlayers()) {
             gamePlayer.addRoundWon();

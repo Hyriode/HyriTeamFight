@@ -123,6 +123,10 @@ public class TFPlayer extends HyriGamePlayer {
         if (killer != null) {
             killer.addKill();
             killer.getScoreboard().update();
+
+            if (!killer.isDead() && killer.isOnline() && TFValues.GOLDEN_APPLE_ON_KILL.get()) {
+                killer.getPlayer().getInventory().addItem(new ItemStack(Material.GOLDEN_APPLE));
+            }
         }
 
         this.deaths++;
