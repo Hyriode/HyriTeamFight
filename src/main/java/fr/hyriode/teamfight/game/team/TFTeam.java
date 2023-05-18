@@ -73,6 +73,10 @@ public class TFTeam extends HyriGameTeam {
     }
 
     public void setMaxPoints(int maxPoints) {
+        if (maxPoints > TFValues.MAX_POINTS.get()) {
+            return;
+        }
+
         this.maxPoints = maxPoints;
     }
 

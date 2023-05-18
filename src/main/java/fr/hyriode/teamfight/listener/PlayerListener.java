@@ -126,6 +126,24 @@ public class PlayerListener extends HyriListener<HyriTeamFight> {
         }
     }
 
+    @SuppressWarnings("deprecation")
+    @EventHandler
+    public void onMove(PlayerMoveEvent event) {
+        final Player player = event.getPlayer();
+        final TFGame game = this.plugin.getGame();
+        final TFPlayer gamePlayer = game.getPlayer(player);
+
+        if (gamePlayer == null) {
+            return;
+        }
+
+        if (game.getRound().isPhase(Phase.WAITING)) {
+            if (!player.isOnGround()) {
+                event.setTo(event.getFrom());
+            }
+        }
+    }
+
     @EventHandler
     public void onDrop(PlayerDropItemEvent event) {
         event.setCancelled(true);

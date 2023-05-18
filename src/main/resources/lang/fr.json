@@ -44,6 +44,8 @@
   "host.option.golden-apples.description": "&7Définis le nombre de pommes en\n&7or à donner aux joueurs.",
   "host.option.win-points.name": "&bPoints nécessaires",
   "host.option.win-points.description": "&7Définis le nombre de points nécessaires\n&7pour remporter la partie.",
+  "host.option.max-points.name": "&bPoints maximum",
+  "host.option.max-points.description": "&7Définis le maximum de points pour\n&7gagner la partie si le match va en\n&7prolongation.",
   "host.option.spleef.name": "&bSpleef",
   "host.option.spleef.description": "&7Autorise ou non les joueurs\n&7à pouvoir casser les blocs\n&7sous les autres joueurs.",
   "host.option.two-points-difference.name": "&bDeux points d'écart",

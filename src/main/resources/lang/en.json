@@ -44,6 +44,8 @@
   "host.option.golden-apples.description": "&7Set the amount of golden apples\n&7to give to players.",
   "host.option.win-points.name": "&bNecessary points",
   "host.option.win-points.description": "&7Set the necessary amount of points\n&7to win the game.",
+  "host.option.max-points.name": "&bMax points",
+  "host.option.max-points.description": "&7Set the maximum amount of points\n&7to win the game if it goes to overtime.",
   "host.option.spleef.name": "&bSpleef",
   "host.option.spleef.description": "&7Set whether players can\n&7break blocks under other\n&7players or not.",
   "host.option.two-points-difference.name": "&bTwo points gap",
