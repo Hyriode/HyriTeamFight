@@ -47,7 +47,7 @@ public class TFWaitingRoom extends HyriWaitingRoom {
         normal.addData(NPCData.voidData());
         normal.addData(new NPCData(LANG_DATA.apply("victories"), account -> String.valueOf(this.getStatistics(gameType, account).getVictories())));
         normal.addData(new NPCData(LANG_DATA.apply("games-played"), account -> String.valueOf(this.getStatistics(gameType, account).getGamesPlayed())));
-        normal.addData(new NPCData(LANG_DATA.apply("played-time"), account -> this.formatPlayedTime(account, account.getStatistics().getPlayTime("rushtheflag#" + gameType.getName()))));
+        normal.addData(new NPCData(LANG_DATA.apply("played-time"), account -> this.formatPlayedTime(account, account.getStatistics().getPlayTime(HyriTeamFight.ID + "#" + gameType.getName()))));
 
         this.addNPCCategory(slot, normal);
     }

@@ -51,5 +51,7 @@
   "host.option.two-points-difference.name": "&bDeux points d'écart",
   "host.option.two-points-difference.description": "&7Définis s'il faut 2 points d'écart\n&7pour remporter la partie.",
   "host.option.golden-apple-kill.name": "&bPommes d'or (Kill)",
-  "host.option.golden-apple-kill.description": "&7Définis si un joueur recevera\n&7une pomme en or après avoir\n&7tué quelqu'un."
+  "host.option.golden-apple-kill.description": "&7Définis si un joueur recevera\n&7une pomme en or après avoir\n&7tué quelqu'un.",
+  "host.option.blocks.name": "&bBlocs",
+  "host.option.blocks.description": "&7Définis si l'utilisation des blocs\n&7est activé ou non."
 }

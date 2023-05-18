@@ -51,5 +51,7 @@
   "host.option.two-points-difference.name": "&bTwo points gap",
   "host.option.two-points-difference.description": "&7Set whether teams must have a\n&7gap of two points to win the game.",
   "host.option.golden-apple-kill.name": "&bGolden apples (Kill)",
-  "host.option.golden-apple-kill.description": "&7Set if a player will receive a\n&7golden apple after killing someone."
+  "host.option.golden-apple-kill.description": "&7Set if a player will receive a\n&7golden apple after killing someone.",
+  "host.option.blocks.name": "&bBlocks",
+  "host.option.blocks.description": "&7Set whether blocks can be used\n&7or not."
 }
