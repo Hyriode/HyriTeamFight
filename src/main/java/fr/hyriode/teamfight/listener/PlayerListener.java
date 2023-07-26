@@ -136,6 +136,10 @@ public class PlayerListener extends HyriListener<HyriTeamFight> {
         if (gamePlayer == null) {
             return;
         }
+        
+        if (game.getState() != HyriGameState.PLAYING) {
+            return;
+        }
 
         if (game.getRound().isPhase(Phase.WAITING)) {
             if (!player.isOnGround()) {
